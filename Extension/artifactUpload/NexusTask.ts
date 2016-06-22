@@ -32,12 +32,17 @@ var formData = {
     g: groupId,
     a: artifactId,
     v: artifactVersion,
-    c: classifier,
+//    c: classifier,
     p: packaging,
-    e: extension,
+//    e: extension,
     // Pass data via Streams
     my_file: fs.createReadStream(fileName)
 };
+
+if (classifier)
+    formData["c"] = classifier;
+if (extension)
+    formData["e"] = extension;
 
 var serverEndpointUrl = tl.getEndpointUrl(serverEndpoint, false);
 tl.debug('serverEndpointUrl=' + serverEndpointUrl);
